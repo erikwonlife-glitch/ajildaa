@@ -1,0 +1,100 @@
+{
+  "nav": {
+    "home": "Нүүр",
+    "jobs": "Ажлын байр",
+    "freelancers": "Фрилансерүүд",
+    "contracts": "Гэрээнүүд",
+    "profile": "Профайл",
+    "login": "Нэвтрэх",
+    "register": "Бүртгүүлэх",
+    "logout": "Гарах",
+    "dashboard": "Хяналтын самбар",
+    "postJob": "Ажил нийтлэх"
+  },
+  "hero": {
+    "title": "Монголын шилдэг ажлын платформ",
+    "subtitle": "Авъяаслаг мэргэжилтнүүдтэй холбогдож, хамгийн сайн ажлыг олоорой",
+    "searchPlaceholder": "Ажил, ур чадвар, компани хайх...",
+    "searchButton": "Хайх",
+    "stats": {
+      "jobs": "Нийт ажлын байр",
+      "freelancers": "Мэргэжилтнүүд",
+      "companies": "Компаниуд",
+      "hired": "Амжилттай ажилд орсон"
+    }
+  },
+  "jobs": {
+    "title": "Сүүлийн ажлын байрууд",
+    "viewAll": "Бүгдийг харах",
+    "postedAgo": "{time}-н өмнө нийтлэгдсэн",
+    "budget": "Төсөв",
+    "proposals": "Өргөдөл",
+    "remote": "Зайнаас",
+    "onsite": "Байранд",
+    "apply": "Өргөдөл гаргах",
+    "save": "Хадгалах",
+    "categories": {
+      "all": "Бүгд",
+      "it": "Мэдээлэл технологи",
+      "design": "Дизайн",
+      "marketing": "Маркетинг",
+      "finance": "Санхүү",
+      "education": "Боловсрол",
+      "construction": "Барилга",
+      "other": "Бусад"
+    },
+    "status": {
+      "open": "Нээлттэй",
+      "inProgress": "Хийгдэж байна",
+      "completed": "Дууссан",
+      "cancelled": "Цуцлагдсан"
+    }
+  },
+  "auth": {
+    "loginTitle": "Нэвтрэх",
+    "registerTitle": "Бүртгүүлэх",
+    "email": "Цахим шуудан",
+    "password": "Нууц үг",
+    "confirmPassword": "Нууц үг давтах",
+    "fullName": "Бүтэн нэр",
+    "phone": "Утасны дугаар",
+    "loginButton": "Нэвтрэх",
+    "registerButton": "Бүртгүүлэх",
+    "noAccount": "Бүртгэл байхгүй юу?",
+    "hasAccount": "Аль хэдийн бүртгэлтэй юу?",
+    "forgotPassword": "Нууц үг мартсан?",
+    "orContinueWith": "Эсвэл дараахаар нэвтрэх",
+    "roleClient": "Ажил олгогч",
+    "roleWorker": "Мэргэжилтэн / Фрилансер",
+    "agreeTerms": "Үйлчилгээний нөхцөлтэй зөвшөөрч байна"
+  },
+  "profile": {
+    "title": "Профайл",
+    "editProfile": "Профайл засах",
+    "skills": "Ур чадвар",
+    "hourlyRate": "Цагийн үнэ",
+    "availability": "Боломжтой",
+    "unavailable": "Боломжгүй",
+    "portfolio": "Портфолио",
+    "reviews": "Үнэлгээнүүд",
+    "completedJobs": "Дууссан ажлууд",
+    "memberSince": "Гишүүн болсон"
+  },
+  "common": {
+    "loading": "Уншиж байна...",
+    "error": "Алдаа гарлаа",
+    "success": "Амжилттай",
+    "cancel": "Болих",
+    "save": "Хадгалах",
+    "delete": "Устгах",
+    "edit": "Засах",
+    "back": "Буцах",
+    "next": "Дараах",
+    "submit": "Илгээх",
+    "search": "Хайх",
+    "filter": "Шүүлт",
+    "sortBy": "Эрэмбэлэх",
+    "currency": "₮",
+    "perHour": "/цаг"
+  }
+}

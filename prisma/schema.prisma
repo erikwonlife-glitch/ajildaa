@@ -1,0 +1,176 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+enum UserRole {
+  CLIENT
+  WORKER
+  ADMIN
+}
+
+enum JobStatus {
+  OPEN
+  IN_PROGRESS
+  COMPLETED
+  CANCELLED
+}
+
+enum ProposalStatus {
+  PENDING
+  ACCEPTED
+  REJECTED
+  WITHDRAWN
+}
+
+enum ContractStatus {
+  ACTIVE
+  COMPLETED
+  DISPUTED
+  CANCELLED
+}
+
+enum PaymentStatus {
+  PENDING
+  PROCESSING
+  COMPLETED
+  FAILED
+  REFUNDED
+}
+
+model User {
+  id            String    @id @default(cuid())
+  supabaseId    String    @unique
+  email         String    @unique
+  name          String?
+  avatarUrl     String?
+  role          UserRole  @default(CLIENT)
+  phoneNumber   String?
+  isVerified    Boolean   @default(false)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  workerProfile WorkerProfile?
+  postedJobs    Job[]           @relation("ClientJobs")
+  proposals     Proposal[]
+  clientContracts  Contract[]  @relation("ClientContracts")
+  workerContracts  Contract[]  @relation("WorkerContracts")
+  givenReviews     Review[]    @relation("ReviewGiver")
+  receivedReviews  Review[]    @relation("ReviewReceiver")
+  payments         Payment[]
+}
+
+model WorkerProfile {
+  id           String   @id @default(cuid())
+  userId       String   @unique
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title        String
+  bio          String?
+  skills       String[]
+  hourlyRate   Decimal  @db.Decimal(10, 2)
+  availability Boolean  @default(true)
+  portfolioUrl String?
+  location     String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@index([skills])
+}
+
+model Job {
+  id           String    @id @default(cuid())
+  clientId     String
+  client       User      @relation("ClientJobs", fields: [clientId], references: [id], onDelete: Cascade)
+  title        String
+  description  String
+  category     String
+  skills       String[]
+  budget       Decimal   @db.Decimal(10, 2)
+  isFixedPrice Boolean   @default(true)
+  location     String?
+  isRemote     Boolean   @default(true)
+  status       JobStatus @default(OPEN)
+  deadline     DateTime?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  proposals    Proposal[]
+  contract     Contract?
+
+  @@index([status, category])
+  @@index([createdAt(sort: Desc)])
+}
+
+model Proposal {
+  id           String         @id @default(cuid())
+  jobId        String
+  job          Job            @relation(fields: [jobId], references: [id], onDelete: Cascade)
+  workerId     String
+  worker       User           @relation(fields: [workerId], references: [id], onDelete: Cascade)
+  coverLetter  String
+  bidAmount    Decimal        @db.Decimal(10, 2)
+  deliveryDays Int
+  status       ProposalStatus @default(PENDING)
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+
+  @@unique([jobId, workerId])
+}
+
+model Contract {
+  id           String         @id @default(cuid())
+  jobId        String         @unique
+  job          Job            @relation(fields: [jobId], references: [id])
+  clientId     String
+  client       User           @relation("ClientContracts", fields: [clientId], references: [id])
+  workerId     String
+  worker       User           @relation("WorkerContracts", fields: [workerId], references: [id])
+  agreedAmount Decimal        @db.Decimal(10, 2)
+  startDate    DateTime       @default(now())
+  endDate      DateTime?
+  status       ContractStatus @default(ACTIVE)
+  terms        String?
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+
+  payments     Payment[]
+  reviews      Review[]
+}
+
+model Review {
+  id         String   @id @default(cuid())
+  contractId String
+  contract   Contract @relation(fields: [contractId], references: [id], onDelete: Cascade)
+  giverId    String
+  giver      User     @relation("ReviewGiver", fields: [giverId], references: [id])
+  receiverId String
+  receiver   User     @relation("ReviewReceiver", fields: [receiverId], references: [id])
+  rating     Int      // 1–5
+  comment    String?
+  createdAt  DateTime @default(now())
+
+  @@unique([contractId, giverId])
+}
+
+model Payment {
+  id            String        @id @default(cuid())
+  contractId    String
+  contract      Contract      @relation(fields: [contractId], references: [id])
+  userId        String
+  user          User          @relation(fields: [userId], references: [id])
+  amount        Decimal       @db.Decimal(10, 2)
+  currency      String        @default("MNT")
+  status        PaymentStatus @default(PENDING)
+  provider      String?       // e.g. "qpay", "golomt"
+  providerRefId String?
+  metadata      Json?
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+
+  @@index([status])
+}

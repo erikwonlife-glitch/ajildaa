@@ -1,0 +1,100 @@
+{
+  "nav": {
+    "home": "Home",
+    "jobs": "Jobs",
+    "freelancers": "Freelancers",
+    "contracts": "Contracts",
+    "profile": "Profile",
+    "login": "Login",
+    "register": "Sign Up",
+    "logout": "Logout",
+    "dashboard": "Dashboard",
+    "postJob": "Post a Job"
+  },
+  "hero": {
+    "title": "Mongolia's Leading Jobs Platform",
+    "subtitle": "Connect with talented professionals and find the best opportunities",
+    "searchPlaceholder": "Search jobs, skills, companies...",
+    "searchButton": "Search",
+    "stats": {
+      "jobs": "Total Jobs",
+      "freelancers": "Professionals",
+      "companies": "Companies",
+      "hired": "Successfully Hired"
+    }
+  },
+  "jobs": {
+    "title": "Latest Job Listings",
+    "viewAll": "View All",
+    "postedAgo": "Posted {time} ago",
+    "budget": "Budget",
+    "proposals": "Proposals",
+    "remote": "Remote",
+    "onsite": "On-site",
+    "apply": "Apply Now",
+    "save": "Save",
+    "categories": {
+      "all": "All",
+      "it": "Information Technology",
+      "design": "Design",
+      "marketing": "Marketing",
+      "finance": "Finance",
+      "education": "Education",
+      "construction": "Construction",
+      "other": "Other"
+    },
+    "status": {
+      "open": "Open",
+      "inProgress": "In Progress",
+      "completed": "Completed",
+      "cancelled": "Cancelled"
+    }
+  },
+  "auth": {
+    "loginTitle": "Login",
+    "registerTitle": "Create Account",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "fullName": "Full Name",
+    "phone": "Phone Number",
+    "loginButton": "Login",
+    "registerButton": "Create Account",
+    "noAccount": "Don't have an account?",
+    "hasAccount": "Already have an account?",
+    "forgotPassword": "Forgot password?",
+    "orContinueWith": "Or continue with",
+    "roleClient": "Employer / Client",
+    "roleWorker": "Professional / Freelancer",
+    "agreeTerms": "I agree to the Terms of Service"
+  },
+  "profile": {
+    "title": "Profile",
+    "editProfile": "Edit Profile",
+    "skills": "Skills",
+    "hourlyRate": "Hourly Rate",
+    "availability": "Available",
+    "unavailable": "Unavailable",
+    "portfolio": "Portfolio",
+    "reviews": "Reviews",
+    "completedJobs": "Completed Jobs",
+    "memberSince": "Member Since"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "success": "Success",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "back": "Back",
+    "next": "Next",
+    "submit": "Submit",
+    "search": "Search",
+    "filter": "Filter",
+    "sortBy": "Sort By",
+    "currency": "₮",
+    "perHour": "/hr"
+  }
+}
